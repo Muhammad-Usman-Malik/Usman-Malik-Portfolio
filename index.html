@@ -1,566 +1,620 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Usman Malik | Portfolio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        scroll-behavior: smooth;
-      }
-
-      body {
-        font-family: "Poppins", sans-serif;
-        background: #0f172a;
-        color: white;
-        overflow-x: hidden;
-      }
-
-      body::before {
-        content: "";
-        position: fixed;
-        width: 500px;
-        height: 500px;
-        background: rgba(59, 130, 246, 0.15);
-        filter: blur(120px);
-        top: -100px;
-        left: -100px;
-        z-index: -1;
-      }
-
-      body::after {
-        content: "";
-        position: fixed;
-        width: 500px;
-        height: 500px;
-        background: rgba(168, 85, 247, 0.15);
-        filter: blur(120px);
-        bottom: -100px;
-        right: -100px;
-        z-index: -1;
-      }
-
-      nav {
-        position: fixed;
-        width: 100%;
-        top: 0;
-        z-index: 1000;
-        backdrop-filter: blur(15px);
-        background: rgba(15, 23, 42, 0.7);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      }
-
-      .nav-container {
-        max-width: 1200px;
-        margin: auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 18px 20px;
-      }
-
-      .logo {
-        font-size: 1.4rem;
-        font-weight: 700;
-        color: #60a5fa;
-      }
-
-      .nav-links {
-        display: flex;
-        gap: 25px;
-      }
-
-      .nav-links a {
-        text-decoration: none;
-        color: white;
-        transition: 0.3s;
-        font-size: 0.95rem;
-      }
-
-      .nav-links a:hover {
-        color: #60a5fa;
-      }
-
-      section {
-        padding: 110px 20px;
-      }
-
-      .container {
-        max-width: 1200px;
-        margin: auto;
-      }
-
-      .hero {
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .hero-content {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 60px;
-        align-items: center;
-      }
-
-      .hero-text h1 {
-        font-size: 4rem;
-        line-height: 1.1;
-        margin-bottom: 20px;
-      }
-
-      .hero-text h1 span {
-        color: #60a5fa;
-      }
-
-      .typing {
-        font-size: 1.3rem;
-        color: #cbd5e1;
-        margin-bottom: 25px;
-        height: 30px;
-      }
-
-      .hero-text p {
-        color: #94a3b8;
-        line-height: 1.8;
-        margin-bottom: 30px;
-      }
-
-      .btns {
-        display: flex;
-        gap: 15px;
-        flex-wrap: wrap;
-      }
-
-      .btn {
-        padding: 14px 28px;
-        border-radius: 50px;
-        text-decoration: none;
-        font-weight: 600;
-        transition: 0.3s;
-        display: inline-block;
-      }
-
-      .primary {
-        background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-        color: white;
-      }
-
-      .secondary {
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        color: white;
-      }
-
-      .btn:hover {
-        transform: translateY(-3px);
-      }
-
-      .hero-image {
-        display: flex;
-        justify-content: center;
-      }
-
-      .hero-image img {
-        width: 350px;
-        height: 350px;
-        object-fit: cover;
-        border-radius: 30px;
-        border: 3px solid rgba(255, 255, 255, 0.1);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-      }
-
-      .section-title {
-        text-align: center;
-        margin-bottom: 70px;
-      }
-
-      .section-title h2 {
-        font-size: 2.8rem;
-        margin-bottom: 10px;
-      }
-
-      .section-title p {
-        color: #94a3b8;
-      }
-
-      .glass {
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 24px;
-        backdrop-filter: blur(15px);
-      }
-
-      .about-box {
-        padding: 40px;
-        line-height: 1.9;
-        color: #cbd5e1;
-      }
-
-      .skills-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-        gap: 20px;
-      }
-
-      .skill-card {
-        padding: 25px;
-        text-align: center;
-        transition: 0.3s;
-      }
-
-      .skill-card:hover {
-        transform: translateY(-5px);
-        border-color: rgba(96, 165, 250, 0.5);
-      }
-
-      .skill-card h3 {
-        font-size: 1rem;
-        margin-top: 10px;
-      }
-
-      .projects {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 30px;
-      }
-
-      .project-card {
-        padding: 30px;
-        transition: 0.3s;
-      }
-
-      .project-card:hover {
-        transform: translateY(-8px);
-      }
-
-      .project-card h3 {
-        margin-bottom: 15px;
-        color: #60a5fa;
-      }
-
-      .project-card p {
-        color: #cbd5e1;
-        line-height: 1.7;
-      }
-
-      .timeline {
-        position: relative;
-        margin-top: 50px;
-      }
-
-      .timeline::before {
-        content: "";
-        position: absolute;
-        left: 50%;
-        width: 2px;
-        background: rgba(255, 255, 255, 0.15);
-        top: 0;
-        bottom: 0;
-        transform: translateX(-50%);
-      }
-
-      .timeline-item {
-        width: 50%;
-        padding: 20px 40px;
-        position: relative;
-      }
-
-      .timeline-item:nth-child(odd) {
-        left: 0;
-        text-align: right;
-      }
-
-      .timeline-item:nth-child(even) {
-        left: 50%;
-      }
-
-      .timeline-content {
-        padding: 25px;
-      }
-
-      .timeline-content h3 {
-        color: #60a5fa;
-        margin-bottom: 8px;
-      }
-
-      .timeline-content p {
-        color: #cbd5e1;
-        line-height: 1.7;
-      }
-
-      .contact-box {
-        text-align: center;
-        padding: 60px 30px;
-      }
-
-      .contact-box h2 {
-        margin-bottom: 20px;
-        font-size: 2.5rem;
-      }
-
-      .contact-box p {
-        color: #cbd5e1;
-        margin-bottom: 30px;
-      }
-
-      footer {
-        text-align: center;
-        padding: 25px;
-        color: #94a3b8;
-        border-top: 1px solid rgba(255, 255, 255, 0.08);
-      }
-
-      @media (max-width: 900px) {
-        .timeline::before {
-          left: 20px;
-        }
-
-        .timeline-item,
-        .timeline-item:nth-child(even),
-        .timeline-item:nth-child(odd) {
-          width: 100%;
-          left: 0;
-          text-align: left;
-          padding-left: 60px;
-        }
-
-        .hero-text h1 {
-          font-size: 3rem;
-        }
-      }
-
-      @media (max-width: 600px) {
-        .hero-text h1 {
-          font-size: 2.4rem;
-        }
-
-        .hero-image img {
-          width: 280px;
-          height: 280px;
-        }
-
-        .nav-links {
-          display: none;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <nav>
-      <div class="nav-container">
-        <div class="logo">Usman Malik</div>
-        <div class="nav-links">
-          <a href="#about">About</a>
-          <a href="#skills">Skills</a>
-          <a href="#experience">Experience</a>
-          <a href="#projects">Projects</a>
-          <a href="#contact">Contact</a>
-        </div>
-      </div>
-    </nav>
-
-    <section class="hero">
-      <div class="container hero-content">
-        <div class="hero-text">
-          <h1>Hi, I'm <span>Usman Malik</span></h1>
-          <div class="typing" id="typing"></div>
-          <p>
-            Passionate developer focused on building scalable, modern and
-            user-centric digital experiences. I specialize in clean UI design,
-            full-stack development, and creating impactful technology solutions.
-          </p>
-
-          <div class="btns">
-            <a href="#contact" class="btn primary">Hire Me</a>
-            <a href="#projects" class="btn secondary">View Work</a>
-          </div>
-        </div>
-
-        <div class="hero-image">
-          <img src="./usman.webp" alt="Usman Malik" />
-        </div>
-      </div>
-    </section>
-
-    <section id="about">
-      <div class="container">
-        <div class="section-title">
-          <h2>About Me</h2>
-          <p>Get to know me better</p>
-        </div>
-
-        <div class="glass about-box">
-          I am a dedicated technology enthusiast with a strong interest in
-          software engineering, web development, and problem solving. I enjoy
-          transforming ideas into real-world applications with modern
-          technologies and elegant user experiences. My focus is on continuous
-          learning, collaboration, and delivering high-quality solutions.
-        </div>
-      </div>
-    </section>
-
-    <section id="skills">
-      <div class="container">
-        <div class="section-title">
-          <h2>Skills</h2>
-          <p>Technologies and tools I work with</p>
-        </div>
-
-        <div class="skills-grid">
-          <div class="glass skill-card"><h3>HTML5</h3></div>
-          <div class="glass skill-card"><h3>CSS3</h3></div>
-          <div class="glass skill-card"><h3>JavaScript</h3></div>
-          <div class="glass skill-card"><h3>React.js</h3></div>
-          <div class="glass skill-card"><h3>Node.js</h3></div>
-          <div class="glass skill-card"><h3>TypeScript</h3></div>
-          <div class="glass skill-card"><h3>Python</h3></div>
-          <div class="glass skill-card"><h3>Git & GitHub</h3></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="experience">
-      <div class="container">
-        <div class="section-title">
-          <h2>Experience & Education</h2>
-          <p>My professional and academic journey</p>
-        </div>
-
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="glass timeline-content">
-              <h3>Software Development</h3>
-              <p>
-                Worked on modern web applications, responsive UI design, and
-                backend integrations using current development technologies.
-              </p>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="glass timeline-content">
-              <h3>Academic Background</h3>
-              <p>
-                Focused on software engineering concepts, programming
-                fundamentals, databases, and application architecture.
-              </p>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="glass timeline-content">
-              <h3>Project Development</h3>
-              <p>
-                Built multiple projects involving frontend development, APIs,
-                and modern software workflows.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="projects">
-      <div class="container">
-        <div class="section-title">
-          <h2>Projects</h2>
-          <p>Some of my featured work</p>
-        </div>
-
-        <div class="projects">
-          <div class="glass project-card">
-            <h3>Portfolio Website</h3>
-            <p>
-              A modern and responsive personal portfolio designed to showcase
-              professional experience, projects, and skills.
-            </p>
-          </div>
-
-          <div class="glass project-card">
-            <h3>Web Applications</h3>
-            <p>
-              Developed responsive and scalable web applications with clean
-              interfaces and smooth user experiences.
-            </p>
-          </div>
-
-          <div class="glass project-card">
-            <h3>Software Solutions</h3>
-            <p>
-              Worked on software-focused solutions involving modern
-              technologies, APIs, and optimized workflows.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="container">
-        <div class="glass contact-box">
-          <h2>Let's Work Together</h2>
-          <p>
-            Interested in collaborating or discussing opportunities? Feel free
-            to connect with me.
-          </p>
-
-          <a href="mailto:" engr.usman.3d@gmail.com class="btn primary"
-            >Contact Me</a
-          >
-        </div>
-      </div>
-    </section>
-
-    <footer>© 2026 Usman Malik. All Rights Reserved.</footer>
-
-    <script>
-      const words = [
-        "Software Developer",
-        "Frontend Engineer",
-        "Problem Solver",
-        "Tech Enthusiast",
-      ];
-
-      let i = 0;
-      let j = 0;
-      let currentWord = "";
-      let isDeleting = false;
-      const typing = document.getElementById("typing");
-
-      function type() {
-        currentWord = words[i];
-
-        if (isDeleting) {
-          typing.textContent = currentWord.substring(0, j--);
-        } else {
-          typing.textContent = currentWord.substring(0, j++);
-        }
-
-        if (!isDeleting && j === currentWord.length + 1) {
-          isDeleting = true;
-          setTimeout(type, 1000);
-          return;
-        }
-
-        if (isDeleting && j === 0) {
-          isDeleting = false;
-          i = (i + 1) % words.length;
-        }
-
-        setTimeout(type, isDeleting ? 50 : 100);
-      }
-
-      type();
-    </script>
-  </body>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+<title>Usman Malik | Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Poppins',sans-serif;
+background:#0f172a;
+color:white;
+overflow-x:hidden;
+}
+
+body::-webkit-scrollbar{
+width:6px;
+}
+
+body::-webkit-scrollbar-thumb{
+background:#38bdf8;
+border-radius:10px;
+}
+
+.container{
+width:100%;
+max-width:1200px;
+margin:auto;
+padding:0 20px;
+}
+
+header{
+width:100%;
+position:fixed;
+top:0;
+left:0;
+z-index:1000;
+backdrop-filter:blur(12px);
+background:rgba(15,23,42,0.75);
+border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 0;
+gap:15px;
+}
+
+.logo{
+font-size:clamp(18px,4vw,24px);
+font-weight:700;
+color:#38bdf8;
+word-break:break-word;
+}
+
+nav ul{
+display:flex;
+gap:18px;
+list-style:none;
+flex-wrap:wrap;
+justify-content:flex-end;
+}
+
+nav ul li a{
+text-decoration:none;
+color:white;
+font-size:14px;
+transition:0.3s;
+}
+
+nav ul li a:hover{
+color:#38bdf8;
+}
+
+.hero{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:120px 0 80px;
+}
+
+.hero-content{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:50px;
+align-items:center;
+width:100%;
+}
+
+.hero-text h1{
+font-size:clamp(32px,7vw,70px);
+line-height:1.1;
+margin-bottom:15px;
+word-break:break-word;
+}
+
+.hero-text h1 span{
+color:#38bdf8;
+}
+
+.hero-text h2{
+font-size:clamp(18px,4vw,28px);
+font-weight:400;
+margin-bottom:20px;
+min-height:40px;
+}
+
+.hero-text p{
+color:#cbd5e1;
+line-height:1.8;
+margin-bottom:30px;
+font-size:clamp(14px,3vw,16px);
+}
+
+.btns{
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+}
+
+.btn{
+padding:12px 24px;
+border-radius:50px;
+text-decoration:none;
+font-size:14px;
+font-weight:500;
+transition:0.3s;
+text-align:center;
+min-width:140px;
+}
+
+.primary{
+background:#38bdf8;
+color:#0f172a;
+}
+
+.primary:hover{
+transform:translateY(-3px);
+}
+
+.secondary{
+border:1px solid #38bdf8;
+color:#38bdf8;
+}
+
+.secondary:hover{
+background:#38bdf8;
+color:#0f172a;
+}
+
+.hero-image{
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.hero-image img{
+width:min(100%,380px);
+aspect-ratio:1/1;
+object-fit:cover;
+border-radius:30px;
+border:3px solid rgba(56,189,248,0.5);
+box-shadow:0 0 40px rgba(56,189,248,0.25);
+}
+
+section{
+padding:90px 0;
+}
+
+.section-title{
+font-size:clamp(28px,6vw,40px);
+margin-bottom:50px;
+text-align:center;
+color:#38bdf8;
+}
+
+.about{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+}
+
+.card{
+background:rgba(255,255,255,0.05);
+padding:30px;
+border-radius:25px;
+border:1px solid rgba(255,255,255,0.08);
+backdrop-filter:blur(10px);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-6px);
+}
+
+.card h3{
+margin-bottom:15px;
+color:#38bdf8;
+font-size:22px;
+}
+
+.card p{
+line-height:1.8;
+color:#cbd5e1;
+font-size:15px;
+}
+
+.skills{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+gap:15px;
+}
+
+.skill{
+background:rgba(56,189,248,0.12);
+padding:16px;
+text-align:center;
+border-radius:14px;
+font-size:14px;
+border:1px solid rgba(56,189,248,0.25);
+word-break:break-word;
+}
+
+.timeline{
+display:flex;
+flex-direction:column;
+gap:25px;
+}
+
+.timeline-item{
+padding:25px;
+border-left:3px solid #38bdf8;
+background:rgba(255,255,255,0.04);
+border-radius:0 20px 20px 0;
+}
+
+.timeline-item h4{
+font-size:20px;
+margin-bottom:8px;
+}
+
+.timeline-item p{
+color:#cbd5e1;
+line-height:1.7;
+font-size:15px;
+}
+
+.projects{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px;
+}
+
+.project-card{
+background:rgba(255,255,255,0.05);
+padding:25px;
+border-radius:22px;
+border:1px solid rgba(255,255,255,0.08);
+transition:0.3s;
+}
+
+.project-card:hover{
+transform:translateY(-6px);
+}
+
+.project-card h3{
+margin-bottom:10px;
+color:#38bdf8;
+}
+
+.project-card p{
+color:#cbd5e1;
+line-height:1.7;
+font-size:14px;
+}
+
+.contact{
+text-align:center;
+}
+
+.contact p{
+color:#cbd5e1;
+margin-bottom:20px;
+font-size:15px;
+word-break:break-word;
+}
+
+footer{
+padding:30px 20px;
+text-align:center;
+color:#94a3b8;
+font-size:14px;
+border-top:1px solid rgba(255,255,255,0.08);
+}
+
+@media(max-width:900px){
+
+.hero-content,
+.about{
+grid-template-columns:1fr;
+text-align:center;
+}
+
+.hero-image{
+order:-1;
+}
+
+.btns{
+justify-content:center;
+}
+
+nav{
+flex-direction:column;
+}
+
+nav ul{
+justify-content:center;
+}
+
+}
+
+@media(max-width:480px){
+
+.container{
+padding:0 12px;
+}
+
+.card,
+.project-card,
+.timeline-item{
+padding:18px;
+}
+
+.btn{
+width:100%;
+}
+
+.hero{
+padding-top:150px;
+}
+
+nav ul{
+gap:10px;
+}
+
+nav ul li a{
+font-size:13px;
+}
+
+}
+
+@media(max-width:240px){
+
+body{
+min-width:240px;
+}
+
+.logo{
+font-size:16px;
+text-align:center;
+}
+
+.hero-text h1{
+font-size:26px;
+}
+
+.hero-text h2{
+font-size:16px;
+}
+
+.hero-text p,
+.card p,
+.timeline-item p,
+.project-card p{
+font-size:12px;
+}
+
+.section-title{
+font-size:24px;
+}
+
+.btn{
+font-size:12px;
+padding:10px;
+min-width:auto;
+}
+
+.skill{
+font-size:12px;
+padding:10px;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="container">
+<nav>
+<div class="logo">Usman Malik</div>
+
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#skills">Skills</a></li>
+<li><a href="#experience">Experience</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<section class="hero" id="home">
+<div class="container">
+<div class="hero-content">
+
+<div class="hero-text">
+<h1>Hi, I'm <span>Usman Malik</span></h1>
+<h2 id="typing"></h2>
+
+<p>
+Passionate Software Engineer focused on creating modern, efficient and user-friendly digital experiences.
+Dedicated to continuous learning and building impactful solutions.
+</p>
+
+<div class="btns">
+<a href="#" class="btn primary">Download CV</a>
+<a href="#contact" class="btn secondary">Contact Me</a>
+</div>
+</div>
+
+<div class="hero-image">
+<img src="usman.webp" alt="Usman Malik">
+</div>
+
+</div>
+</div>
+</section>
+
+<section id="about">
+<div class="container">
+
+<h2 class="section-title">About Me</h2>
+
+<div class="about">
+
+<div class="card">
+<h3>Who Am I?</h3>
+<p>
+I am a passionate Computer Science student and aspiring Software Engineer with strong interest in Web Development, Artificial Intelligence and innovative technologies. I enjoy solving real-world problems through clean and efficient solutions.
+</p>
+</div>
+
+<div class="card">
+<h3>Education</h3>
+<p>
+Bachelor's in Computer Science with strong academic background and hands-on project experience in modern technologies and software development practices.
+</p>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<section id="skills">
+<div class="container">
+
+<h2 class="section-title">Skills</h2>
+
+<div class="skills">
+<div class="skill">HTML</div>
+<div class="skill">CSS</div>
+<div class="skill">JavaScript</div>
+<div class="skill">Python</div>
+<div class="skill">C++</div>
+<div class="skill">React</div>
+<div class="skill">UI/UX</div>
+<div class="skill">Problem Solving</div>
+<div class="skill">AI Concepts</div>
+<div class="skill">Responsive Design</div>
+</div>
+
+</div>
+</section>
+
+<section id="experience">
+<div class="container">
+
+<h2 class="section-title">Experience</h2>
+
+<div class="timeline">
+
+<div class="timeline-item">
+<h4>Web Development</h4>
+<p>
+Built responsive and modern web interfaces with focus on performance, accessibility and user experience.
+</p>
+</div>
+
+<div class="timeline-item">
+<h4>Academic Projects</h4>
+<p>
+Worked on multiple software engineering and AI-based projects including intelligent systems and modern web applications.
+</p>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<section id="projects">
+<div class="container">
+
+<h2 class="section-title">Projects</h2>
+
+<div class="projects">
+
+<div class="project-card">
+<h3>AI Threat Detection System</h3>
+<p>
+An AI-powered system capable of listening to multilingual calls and translating them into Urdu to identify potential threats.
+</p>
+</div>
+
+<div class="project-card">
+<h3>Rental Platform</h3>
+<p>
+Developed a modern online rental platform with user-friendly interface and efficient functionality.
+</p>
+</div>
+
+<div class="project-card">
+<h3>Portfolio Website</h3>
+<p>
+Created elegant and responsive portfolio websites with modern animations and optimized layouts.
+</p>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<section id="contact">
+<div class="container">
+
+<h2 class="section-title">Contact</h2>
+
+<div class="contact">
+<p>Email: your-email@example.com</p>
+<p>Phone: +92 XXX XXXXXXX</p>
+<p>Pakistan</p>
+
+<div class="btns" style="justify-content:center;">
+<a href="mailto:your-email@example.com" class="btn primary">Send Email</a>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<footer>
+© 2026 Usman Malik — All Rights Reserved
+</footer>
+
+<script>
+const text = [
+"Software Engineer",
+"Web Developer",
+"AI Enthusiast",
+"Creative Problem Solver"
+];
+
+let count = 0;
+let index = 0;
+let currentText = "";
+let letter = "";
+
+(function type(){
+
+if(count === text.length){
+count = 0;
+}
+
+currentText = text[count];
+letter = currentText.slice(0, ++index);
+
+document.getElementById("typing").textContent = letter;
+
+if(letter.length === currentText.length){
+count++;
+index = 0;
+setTimeout(type, 1500);
+}else{
+setTimeout(type, 90);
+}
+
+})();
+</script>
+
+</body>
 </html>
